@@ -1,0 +1,71 @@
+body {
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: #f8fafc;
+    color: var(--dark);
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2 {
+    font-family: 'Poppins', 'Georgia', serif;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: 2.5em;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 16px;
+}
+
+h2 {
+    font-size: 1.8em;
+    font-weight: 700;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+    position: relative;
+    margin-bottom: 24px;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: var(--gradient-primary);
+    border-radius: 4px;
+}
+
+h3 {
+    margin-bottom: 12px;
+    font-weight: 700;
+    color: var(--dark);
+    font-size: 1.25em;
+    border-left: 4px solid var(--secondary);
+    padding-left: 14px;
+}
+
+p {
+    margin-bottom: 1em;
+    color: var(--texto-suave);
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+a:hover {
+    color: var(--secondary);
+}
