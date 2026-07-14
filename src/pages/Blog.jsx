@@ -4,17 +4,17 @@ import { Link } from 'react-router-dom';
 function Blog() {
 
     return (
-            <main className="p-20 animacao-entrada">
+        <main className="p-20 animacao-entrada">
 
             <section className="page-hero text-center">
                 <div className="page-hero-container">
                     <div className="page-hero-content">
-                        <h1 className="page-title">Blog</h1>
-                        <p className="page-subtitle">Tendências • Notícias</p>
+                        <h1 className="page-title">TITULO</h1>
+                        <p className="page-subtitle">Palavra 1 • Palavra 2</p>
                     </div>
                     <div className="slogan-box">
                         <span className="slogan fonte-titulo">
-                            Confira nossas novidades mais recentes!
+                            Frase de impacto aqui
                         </span>
                     </div>
                 </div>
@@ -23,12 +23,13 @@ function Blog() {
             {/* Artigo em destaque (card horizontal com borda âmbar grossa) */}
             <section className="mb-20">
                 <div className="card card-blog-destaque">
-                    <span className="cargo">05/06/2026</span>
+                    <span className="cargo">Data Noticia</span>
                     <h2 className="card-titulo blog-titulo-destaque sem-linha">
-                        Como um bom design pode aumentar suas vendas em até 200%
+                        Titulo Noticia
                     </h2>
                     <p>
-                        A importância da criação de identidades visuais estratégicas. Entenda como marcas que investem em experiência visual e posicionamento estético convertem muito mais clientes e dominam o mercado digital.
+                        TEXTO GERAL PARA PARAGRAFOS DE TEXTO TEXTO GERAL PARA PARAGRAFOS DE TEXTO TEXTO GERAL PARA
+                        PARAGRAFOS DE TEXTO TEXTO GERAL PARA PARAGRAFOS DE TEXTO TEXTO GERAL PARA PARAGRAFOS DE TEXTO
                     </p>
                     <Link to="/blog/1" className="btn btn-outline mt-10">
                         Quero ler o artigo completo
@@ -40,22 +41,25 @@ function Blog() {
             <section>
                 <div className="grid-auto">
                     <div className="card card-blog">
-                        <span className="cargo">10/06/2026</span>
+                        <span className="cargo">Data Noticia</span>
                         <h2 className="card-titulo blog-titulo-destaque sem-linha">
-                            5 tendências de branding para 2026</h2>
+                            Titulo Noticia
+                        </h2>
                         <p>
-                            O minimalismo caloroso e o uso de IA nas marcas. Novidades estéticas que vão fazer muito sucesso no próximo ano.
+                            TEXTO GERAL PARA PARAGRAFOS DE TEXTO TEXTO GERAL PARA PARAGRAFOS DE TEXTO TEXTO GERAL PARA
+                            PARAGRAFOS DE TEXTO TEXTO GERAL PARA PARAGRAFOS DE TEXTO TEXTO GERAL PARA PARAGRAFOS DE TEXTO
                         </p>
                         <Link to="/blog/2" className="btn btn-outline mt-10">Ler artigo</Link>
                     </div>
 
                     <div className="card card-blog">
-                        <span className="cargo">01/06/2026</span>
+                        <span className="cargo">Data Noticia</span>
                         <h2 className="card-titulo blog-titulo-destaque sem-linha">
-                            Por que sua empresa precisa de um site profissional
+                            Titulo Noticia
                         </h2>
                         <p>
-                            Entenda como o desenvolvimento web sob medida constrói autoridade e ajuda nos empreendimentos das empresas no Google.
+                            TEXTO GERAL PARA PARAGRAFOS DE TEXTO TEXTO GERAL PARA PARAGRAFOS DE TEXTO TEXTO GERAL PARA
+                            PARAGRAFOS DE TEXTO TEXTO GERAL PARA PARAGRAFOS DE TEXTO TEXTO GERAL PARA PARAGRAFOS DE TEXTO
                         </p>
                         <Link to="/blog/3" className="btn btn-outline mt-10">Ler artigo</Link>
                     </div>

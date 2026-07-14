@@ -25,11 +25,11 @@ function Home() {
                 {/* SEÇÃO 1: QUEM SOMOS */}
                 <section className="section section--flex home-secao1">
                     <div className="home-lado home-esquerda">
-                        <span className="tag">Como agimos?</span>
-                        <h2>Usamos a Criatividade</h2>
+                        <span className="tag">SUB-TAG</span>
+                        <h2>Titulo</h2>
                         <p>
-                            Acreditamos que a criatividade é o ponto de partida para construir marcas que realmente conectam.
-                            Transformamos ideias em identidades autênticas, combinando estratégia, estética e propósito.
+                            TEXTO GERAL PARA PARAGRAFOS DE TEXTO TEXTO GERAL PARA PARAGRAFOS DE TEXTO TEXTO GERAL PARA PARAGRAFOS
+                            DE TEXTO TEXTO GERAL PARA PARAGRAFOS DE TEXTO TEXTO GERAL PARA PARAGRAFOS DE TEXTO
                         </p>
                         <Link to="/sobre" className="btn btn-outline">Saiba mais</Link>
                     </div>
@@ -42,39 +42,50 @@ function Home() {
                 {/* SEÇÃO 2: SERVIÇOS (exemplo estático) */}
                 <section className="section section--flex home-secao2">
                     <div className="section-center">
-                        <span className="tag">Alguns serviços</span>
-                        <h2 className="h2-central sem-linha">O que fazemos</h2>
+                        <span className="tag">SUB-TAG</span>
+                        <h2 className="h2-central sem-linha">Titulo</h2>
                         <div className="grid-4x4">
                             <div className="card">
                                 <div className="icon-box icon-box--service">
                                     <img src={iconVisual} alt="Ícone" />
                                 </div>
-                                <h3 className="card-title">Identidade Visual</h3>
-                                <p>Criação de logotipos, paletas e tipografias que representam sua marca.</p>
+                                <h3 className="card-title">Titulo Card 1</h3>
+                                <p>
+                                    TEXTO GERAL PARA PARAGRAFOS DE TEXTO TEXTO GERAL PARA PARAGRAFOS DE TEXTO TEXTO GERAL PARA
+                                    PARAGRAFOS DE TEXTO TEXTO GERAL PARA PARAGRAFOS DE TEXTO TEXTO GERAL PARA PARAGRAFOS DE TEXTO
+                                </p>
                             </div>
                             <div className="card">
                                 <div className="icon-box icon-box--service">
                                     <img src={iconSocial} alt="Ícone" />
                                 </div>
-                                <h3 className="card-title">Social Media</h3>
-                                <p>Conteúdo visual para redes sociais que engaja seu público.</p>
+                                <h3 className="card-title">Titulo Card 2</h3>
+                                <p>
+                                    TEXTO GERAL PARA PARAGRAFOS DE TEXTO TEXTO GERAL PARA PARAGRAFOS DE TEXTO TEXTO GERAL PARA
+                                    PARAGRAFOS DE TEXTO TEXTO GERAL PARA PARAGRAFOS DE TEXTO TEXTO GERAL PARA PARAGRAFOS DE TEXTO
+                                </p>
                             </div>
                             <div className="card">
                                 <div className="icon-box icon-box--service">
                                     <img src={iconPersonalizacao} alt="Ícone" />
                                 </div>
-                                <h3 className="card-title">Personalização</h3>
-                                <p>Ajustes de design para refletir o estilo do seu negócio.</p>
+                                <h3 className="card-title">Titulo Card 3</h3>
+                                <p>
+                                    TEXTO GERAL PARA PARAGRAFOS DE TEXTO TEXTO GERAL PARA PARAGRAFOS DE TEXTO TEXTO GERAL PARA
+                                    PARAGRAFOS DE TEXTO TEXTO GERAL PARA PARAGRAFOS DE TEXTO TEXTO GERAL PARA PARAGRAFOS DE TEXTO
+                                </p>
                             </div>
                             <div className="card">
                                 <div className="icon-box icon-box--service">
                                     <img src={iconInstitucionais} alt="Ícone" />
                                 </div>
-                                <h3 className="card-title">Sites Institucionais</h3>
-                                <p>Sites modernos, responsivos e otimizados para sua empresa.</p>
+                                <h3 className="card-title">Titulo Card 4</h3>
+                                <p>
+                                    TEXTO GERAL PARA PARAGRAFOS DE TEXTO TEXTO GERAL PARA PARAGRAFOS DE TEXTO TEXTO GERAL PARA
+                                    PARAGRAFOS DE TEXTO TEXTO GERAL PARA PARAGRAFOS DE TEXTO TEXTO GERAL PARA PARAGRAFOS DE TEXTO
+                                </p>
                             </div>
                         </div>
-                        {/* Sem link para serviços – removido */}
                     </div>
                 </section>
 

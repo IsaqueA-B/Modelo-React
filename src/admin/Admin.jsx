@@ -6,7 +6,7 @@ function Admin() {
             <section className="page-hero text-center">
                 <div className="page-hero-container">
                     <div className="page-hero-content">
-                        <h1 className="page-title">Painel Administrativo</h1>
+                        <h1 className="page-title">Administrativo</h1>
                         <p className="page-subtitle">
                             Área restrita. Gerencie o conteúdo do site através deste painel.
                         </p>
