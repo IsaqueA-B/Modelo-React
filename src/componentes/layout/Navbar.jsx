@@ -1,11 +1,18 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { useUser } from '../users/UserContext';
-import Logo from './Logo';
-import iconeSair from '../../assets/images/btn-sair.png';
+import logo from '../../assets/images/Especificos/LogoCompleta.png';
+import iconeSair from '../../assets/images/Icons/Nav_Footer/btn-sair.png';
+
+import iconHome from '../../assets/images/Icons/Nav_Footer/icon-home.png';
+import iconSobre from '../../assets/images/Icons/Nav_Footer/icon-sobre.png';
+import iconBlog from '../../assets/images/Icons/Nav_Footer/icon-blog.png';
+import iconContato from '../../assets/images/Icons/Nav_Footer/icon-contato.png';
+import iconAdmin from '../../assets/images/Icons/Nav_Footer/icon-admin.png';
 
 function Navbar() {
     const { user, logout } = useUser();
     const navigate = useNavigate();
+    const isAdmin = localStorage.getItem('isAdmin') === 'true';
 
     const handleLogout = () => {
         logout();
@@ -13,18 +20,49 @@ function Navbar() {
     };
 
     return (
-        <nav className="navbar">
-            <div className="navbar-left">
-                <Logo />
-            </div>
+        <header className="navbar">
+            <Link to="/" className="navbar-logo">
+                <img src={logo} alt="Logo" />
+            </Link>
 
-            <ul className="nav-list">
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/teste">Exemplos</Link></li>
-                <li><Link to="/projeto">Projeto</Link></li>
-            </ul>
+            <nav className="navbar-nav">
+                <ul className="navbar-links">
+                    <li>
+                        <NavLink to="/" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
+                            <img src={iconHome} alt="" className="navbar-icon" />
+                            <span>Home</span>
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/sobre" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
+                            <img src={iconSobre} alt="" className="navbar-icon" />
+                            <span>Sobre</span>
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/blog" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
+                            <img src={iconBlog} alt="" className="navbar-icon" />
+                            <span>Blog</span>
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/contato" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
+                            <img src={iconContato} alt="" className="navbar-icon" />
+                            <span>Contato</span>
+                        </NavLink>
+                    </li>
+                    {isAdmin && (
+                        <li>
+                            <NavLink to="/admin" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
+                                <img src={iconAdmin} alt="" className="navbar-icon" />
+                                <span>Admin</span>
+                            </NavLink>
+                        </li>
+                    )}
+                </ul>
+            </nav>
 
-            <div className="navbar-right">
+            <div className="navbar-user">
                 {user ? (
                     <>
                         <span className="user-nome">{user.nome}</span>
@@ -39,7 +77,7 @@ function Navbar() {
                     </Link>
                 )}
             </div>
-        </nav>
+        </header>
     );
 }
 

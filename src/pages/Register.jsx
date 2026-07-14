@@ -1,18 +1,18 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useUser } from '../componentes/users/UserContext';
-import { aplicarMascaraCPF } from '../componentes/users/auth';
+import { Link } from 'react-router-dom';
+import { aplicarMascaraCPF } from '../componentes/users/Mascaras';
+import IconVer from "../assets/images/Icons/Login-Register/icon-ver.png";
+import IconCapslock from "../assets/images/Icons/Login-Register/icon-capslock.png";
 
 function Register() {
-    const { register } = useUser();
-    const navigate = useNavigate();
-    const [form, setForm] = useState({
-        nome: '',
-        cpf: '',
-        email: '',
-        senha: ''
-    });
+    const [form, setForm] = useState({ nome: '', cpf: '', email: '', senha: '' });
+    const [confirmarSenha, setConfirmarSenha] = useState('');
     const [termos, setTermos] = useState(false);
+    const [erro, setErro] = useState('');
+    const [mostrarSenha, setMostrarSenha] = useState(false);
+    const [mostrarConfirmacao, setMostrarConfirmacao] = useState(false);
+    const [capsLockSenha, setCapsLockSenha] = useState(false);
+    const [capsLockConfirmacao, setCapsLockConfirmacao] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -25,22 +25,27 @@ function Register() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setErro('');
+
         if (!termos) {
-            alert('Aceite os termos de uso.');
+            setErro('Aceite os termos de uso.');
             return;
         }
-        const resultado = register(form);
-        if (resultado.sucesso) {
-            navigate('/');
-        } else {
-            alert(resultado.mensagem);
+        if (form.senha !== confirmarSenha) {
+            setErro('As senhas não coincidem.');
+            return;
         }
+        // Demonstração: exibe mensagem sem enviar dados
+        alert('Cadastro simulado com sucesso! (Template sem backend)');
+        setForm({ nome: '', cpf: '', email: '', senha: '' });
+        setConfirmarSenha('');
+        setTermos(false);
     };
 
     return (
         <main className="p-20">
             <div className="card" style={{ maxWidth: '500px', margin: '0 auto' }}>
-                <h1 className="text-center">Criar Conta</h1>
+                <h1 className="text-center">Cadastrar</h1>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label>Nome completo</label>
@@ -48,20 +53,77 @@ function Register() {
                     </div>
                     <div className="form-group">
                         <label>CPF</label>
-                        <input name="cpf" value={form.cpf} onChange={handleChange} placeholder="000.000.000-00" maxLength={14} required />
+                        <input name="cpf" value={form.cpf} onChange={handleChange} placeholder="000.000.000-00" maxLength={14} />
                     </div>
                     <div className="form-group">
                         <label>Email</label>
-                        <input name="email" type="email" value={form.email} onChange={handleChange} placeholder="exemplo@gmail.com" required />
+                        <input name="email" type="email" value={form.email} onChange={handleChange} required />
                     </div>
+
                     <div className="form-group">
                         <label>Senha</label>
-                        <input name="senha" type="password" value={form.senha} onChange={handleChange} required />
+                        <div className="input-password-wrapper">
+                            <input
+                                name="senha"
+                                type={mostrarSenha ? 'text' : 'password'}
+                                value={form.senha}
+                                onChange={handleChange}
+                                onKeyDown={(e) => setCapsLockSenha(e.getModifierState('CapsLock'))}
+                                onBlur={() => setCapsLockSenha(false)}
+                                className={capsLockSenha ? 'capslock-active' : ''}
+                                required
+                            />
+                            {capsLockSenha && (
+                                <img src={IconCapslock} alt="Caps Lock" className="input-capslock-icon" />
+                            )}
+                            <button
+                                type="button"
+                                className="input-password-toggle"
+                                onMouseDown={() => setMostrarSenha(true)}
+                                onMouseUp={() => setMostrarSenha(false)}
+                                onMouseLeave={() => setMostrarSenha(false)}
+                                onTouchStart={() => setMostrarSenha(true)}
+                                onTouchEnd={() => setMostrarSenha(false)}
+                            >
+                                <img src={IconVer} alt="olho" className="input-password-icon" />
+                            </button>
+                        </div>
                     </div>
+
+                    <div className="form-group">
+                        <label>Confirmar Senha</label>
+                        <div className="input-password-wrapper">
+                            <input
+                                type={mostrarConfirmacao ? 'text' : 'password'}
+                                value={confirmarSenha}
+                                onChange={(e) => setConfirmarSenha(e.target.value)}
+                                onKeyDown={(e) => setCapsLockConfirmacao(e.getModifierState('CapsLock'))}
+                                onBlur={() => setCapsLockConfirmacao(false)}
+                                className={capsLockConfirmacao ? 'capslock-active' : ''}
+                                required
+                            />
+                            {capsLockConfirmacao && (
+                                <img src={IconCapslock} alt="Caps Lock" className="input-capslock-icon" />
+                            )}
+                            <button
+                                type="button"
+                                className="input-password-toggle"
+                                onMouseDown={() => setMostrarConfirmacao(true)}
+                                onMouseUp={() => setMostrarConfirmacao(false)}
+                                onMouseLeave={() => setMostrarConfirmacao(false)}
+                                onTouchStart={() => setMostrarConfirmacao(true)}
+                                onTouchEnd={() => setMostrarConfirmacao(false)}
+                            >
+                                <img src={IconVer} alt="olho" className="input-password-icon" />
+                            </button>
+                        </div>
+                    </div>
+
                     <div className="form-group checkbox-group">
                         <input type="checkbox" id="termos" checked={termos} onChange={(e) => setTermos(e.target.checked)} />
                         <label htmlFor="termos">Aceito os termos de uso e política de privacidade</label>
                     </div>
+                    {erro && <p className="erro">{erro}</p>}
                     <button type="submit" className="btn w-100">Cadastrar</button>
                 </form>
                 <p className="text-center mt-20">

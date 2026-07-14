@@ -1,11 +1,26 @@
-@import './reset.css';
-@import './variables.css';
-@import './typography.css';
-@import './utilities.css';
-@import './layout.css';
-@import './navbar.css';
-@import './footer.css';
-@import './buttons.css';
-@import './cards.css';
-@import './forms.css';
-@import './animations.css';
+/* GERAIS */
+@import './Gerais/reset.css';
+@import './Gerais/variables.css';
+@import './Gerais/typography.css';
+@import './Gerais/fonts.css';
+@import './Gerais/utilities.css';
+@import './Gerais/layout.css';
+@import './Gerais/buttons.css';
+@import './Gerais/cards.css';
+@import './Gerais/forms.css';
+@import './Gerais/animations.css';
+@import './Gerais/scroll.css';
+@import './Gerais/pageHero.css';
+@import './Gerais/sections.css';
+
+/* EXTRAS */
+@import './Gerais/navbar.css';
+@import './Gerais/footer.css';
+
+/* PAGES */
+@import './Pages/home.css';
+@import './Pages/blog.css';
+@import './Pages/blog-post.css';
+@import './Pages/contato.css';
+@import './Pages/sobre.css';
+@import './Pages/login-cadastro.css';

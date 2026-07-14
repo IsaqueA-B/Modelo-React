@@ -1,52 +1,45 @@
 import { createContext, useContext, useState, useEffect } from 'react';
-import { cpf as cpfValidator } from 'cpf-cnpj-validator';
 
 const UserContext = createContext();
 
 export function UserProvider({ children }) {
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const saved = localStorage.getItem('currentUser');
-        if (saved) setUser(JSON.parse(saved));
+        if (saved) {
+            try {
+                setUser(JSON.parse(saved));
+            } catch {
+                localStorage.removeItem('currentUser');
+                localStorage.removeItem('isAdmin');
+            }
+        }
+        setLoading(false);
     }, []);
 
-    const login = (cpfDigitado, senha) => {
-        const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
-        const encontrado = usuarios.find(u => u.cpf === cpfDigitado && u.senha === senha);
-        if (encontrado) {
-            const { senha, ...userSemSenha } = encontrado;
-            setUser(userSemSenha);
-            localStorage.setItem('currentUser', JSON.stringify(userSemSenha));
-            return true;
+    const login = async (email, senha) => {
+        // Credenciais fixas para modo template
+        if (email === 'admin@email.com' && senha === 'admin123') {
+            const usuario = { nome: 'Admin', email, nivel_acesso: 'admin' };
+            setUser(usuario);
+            localStorage.setItem('currentUser', JSON.stringify(usuario));
+            localStorage.setItem('isAdmin', 'true');
+            return usuario;
+        } else {
+            throw new Error('Email ou senha inválidos');
         }
-        return false;
-    };
-
-    const register = (dados) => {
-        if (!cpfValidator.isValid(dados.cpf)) {
-            return { sucesso: false, mensagem: 'CPF inválido.' };
-        }
-        const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
-        if (usuarios.some(u => u.cpf === dados.cpf || u.email === dados.email)) {
-            return { sucesso: false, mensagem: 'CPF ou email já cadastrado.' };
-        }
-        const novoUsuario = { ...dados };
-        usuarios.push(novoUsuario);
-        localStorage.setItem('usuarios', JSON.stringify(usuarios));
-        const { senha, ...userSemSenha } = novoUsuario;
-        setUser(userSemSenha);
-        localStorage.setItem('currentUser', JSON.stringify(userSemSenha));
-        return { sucesso: true };
     };
 
     const logout = () => {
         setUser(null);
         localStorage.removeItem('currentUser');
+        localStorage.removeItem('isAdmin');
     };
 
     return (
-        <UserContext.Provider value={{ user, login, register, logout }}>
+        <UserContext.Provider value={{ user, login, logout, loading }}>
             {children}
         </UserContext.Provider>
     );
