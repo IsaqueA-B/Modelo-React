@@ -1,10 +1,14 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useUser } from '../componentes/users/UserContext';
 import { aplicarMascaraCPF } from '../componentes/users/Mascaras';
 import IconVer from "../assets/images/Icons/Login-Register/icon-ver.png";
 import IconCapslock from "../assets/images/Icons/Login-Register/icon-capslock.png";
 
 function Register() {
+    const { register } = useUser();  // ⬅️ usando o contexto
+    const navigate = useNavigate();
+
     const [form, setForm] = useState({ nome: '', cpf: '', email: '', senha: '' });
     const [confirmarSenha, setConfirmarSenha] = useState('');
     const [termos, setTermos] = useState(false);
@@ -35,11 +39,15 @@ function Register() {
             setErro('As senhas não coincidem.');
             return;
         }
-        // Demonstração: exibe mensagem sem enviar dados
-        alert('Cadastro simulado com sucesso! (Template sem backend)');
-        setForm({ nome: '', cpf: '', email: '', senha: '' });
-        setConfirmarSenha('');
-        setTermos(false);
+
+        try {
+            // Chama o register do contexto (salva no localStorage)
+            register(form.nome, form.email, form.senha);
+            alert('Cadastro realizado com sucesso! Faça login.');
+            navigate('/login');
+        } catch (error) {
+            setErro(error.message);
+        }
     };
 
     return (
